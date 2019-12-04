@@ -1,0 +1,22 @@
+
+./problem50.2.hs,168
+primes primes2,3
+primes primes3,4
+maybePrime maybePrime7,8
+maybePrime maybePrime8,9
+consec consec13,14
+consec consec14,15
+main main16,17
+main main17,18
+
+./problem50.hs,257
+primes primes3,4
+primes primes4,5
+consecLen consecLen9,10
+consecLen consecLen10,11
+consecPrimeSum consecPrimeSum17,18
+consecPrimeSum consecPrimeSum18,19
+consecLenM consecLenM20,21
+consecLenM consecLenM21,22
+main main26,27
+main main27,28

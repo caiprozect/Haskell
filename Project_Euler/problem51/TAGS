@@ -1,0 +1,25 @@
+
+./problem51.hs,671
+sieve sieve7,8
+sieve sieve8,9
+primesUnder primesUnder14,15
+primesUnder primesUnder15,16
+primeVec primeVec25,26
+primesWDigits primesWDigits27,28
+primesWDigits primesWDigits28,29
+isPrime isPrime30,31
+isPrime isPrime31,32
+maskDigit maskDigit39,40
+maskDigit maskDigit40,41
+maskDigits maskDigits44,45
+maskDigits maskDigits45,46
+orderByMasked orderByMasked54,55
+orderByMasked orderByMasked55,56
+eqWhenMasked eqWhenMasked57,58
+eqWhenMasked eqWhenMasked58,59
+safeMinimum safeMinimum60,61
+safeMinimum safeMinimum61,62
+digitReplacementsP digitReplacementsP64,65
+digitReplacementsP digitReplacementsP65,66
+main main69,70
+main main70,71

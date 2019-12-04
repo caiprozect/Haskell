@@ -1,0 +1,4 @@
+primes :: [Int]
+primes = sieve [2..]
+  where
+    sieve (x:xs) = x : sieve . filter (\n -> n `mod` x /= 0) $ xs

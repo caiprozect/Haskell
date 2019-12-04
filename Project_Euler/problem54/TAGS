@@ -1,0 +1,43 @@
+
+./problem54.hs,1241
+data Hand Hand4,5
+data Hand = HI HI4,5
+data Hand = HI | OP OP4,5
+data Hand = HI | OP | TP TP4,5
+data Hand = HI | OP | TP | TK TK4,5
+data Hand = HI | OP | TP | TK | St St4,5
+data Hand = HI | OP | TP | TK | St | Fs Fs4,5
+data Hand = HI | OP | TP | TK | St | Fs | FH FH4,5
+data Hand = HI | OP | TP | TK | St | Fs | FH | FK FK4,5
+data Hand = HI | OP | TP | TK | St | Fs | FH | FK | SF SF4,5
+data Hand = HI | OP | TP | TK | St | Fs | FH | FK | SF | RF RF4,5
+charToValue charToValue6,7
+charToValue charToValue7,8
+splitVS splitVS21,22
+splitVS splitVS22,23
+sameSuit sameSuit24,25
+sameSuit sameSuit25,26
+royal royal27,28
+royal royal28,29
+straight straight30,31
+straight straight31,32
+compareLen compareLen36,37
+compareLen compareLen37,38
+valSplitTwo valSplitTwo39,40
+valSplitTwo valSplitTwo40,41
+fourKinds fourKinds43,44
+fourKinds fourKinds44,45
+threeKinds threeKinds47,48
+threeKinds threeKinds48,49
+lenCompare lenCompare51,52
+lenCompare lenCompare52,53
+twoPairs twoPairs54,55
+twoPairs twoPairs55,56
+onePair onePair58,59
+onePair onePair59,60
+evalHand evalHand61,62
+evalHand evalHand62,63
+winnerIs winnerIs95,96
+winnerIs winnerIs96,97
+main main105,106
+main main106,107

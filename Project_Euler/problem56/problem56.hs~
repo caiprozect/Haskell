@@ -1,0 +1,4 @@
+import Data.Char
+
+powerfulDigitSum :: Integer
+powerfulDigitSum = maximum . map (sum . digitToInt . show)

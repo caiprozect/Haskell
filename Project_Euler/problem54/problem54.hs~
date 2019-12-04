@@ -1,0 +1,97 @@
+import Data.List
+import Data.List.Split
+
+data Hand = HI | OP | TP | TK | St | Fs | FH | FK | SF | RF deriving Show, Ord, Eq
+
+charToValue :: String -> Int
+charToValue "2" = 2
+charToValue "3" = 3
+charToValue "4" = 4
+charToValue "5" = 5
+charToValue "6" = 6
+charToValue "7" = 7
+charToValue "8" = 8
+charToValue "9" = 9
+charToValue "10" = 10
+charToValue "J" = 11
+charToValue "Q" = 12
+charToValue "K" = 13
+charToValue "A" = 14
+
+splitVS :: String -> (Int, String)
+splitVS str =
+  case length str == 2 of
+    True -> (charToValue . take 1 $ str, drop 1 str)
+    False -> (charToValue . take 2 $ str, drop 2 str)
+
+sameSuit :: [(Int, String)] -> Bool
+sameSuit lst = 1 == (length . group . map snd $ lst)
+
+royal :: [(Int, String)] -> Bool
+royal lst = [10..14] == (sort . map fst $ lst)
+
+straight :: [(Int, String)] -> Bool
+straight lst = [k..k+4] == vals
+  where
+    vals = sort . map fst $ lst
+    k = head vals
+
+valSplitTwo :: [(Int, String)] -> (Bool, Int)
+valSplitTwo lst = (2 == length valLst, head . last . sortBy length $ valLst)
+  where valLst = group . sort . map fst $ lst
+
+fourKinds :: [(Int, String)] -> Bool
+fourKinds lst = (4 == length . last . sortBy legnth $ valLst)
+  where valLst = group . sort . map fst $ lst
+
+threeKinds :: [(Int, String)] -> Bool
+threeKinds lst = (3 == length . last . sortBy length $ valLst)
+  where valLst = group . sort . map fst $ lst
+
+lenCompare :: [a] -> [a] -> Bool
+lenCompare lst1 lst2 = length lst1 == length lst2
+
+twoPairs :: [(Int, String)] -> (Bool, Int)
+twoPairs lst = (2 == length . last . groupBy lenCompare . sortBy length $ valLst, head . last . sort . last . groupBy lenCompare . sortBy length $ valLst) 
+  where valLst = group . sort . map fst $ lst
+
+onePairs :: [(Int, String)] -> Bool
+onePairs lst = 5 /= (length . group . sort . map fst $ lst)
+
+evalHand :: String -> (Hand, Int, Int)
+evalHand str =
+  let
+    svs = map splitVS . splitOn " " $ str
+    highest = maximum . map fst $ svs
+  in
+  case sameSuit svs of
+    True ->
+      case royal svs of
+        True -> (RF, highest, highest)
+        False ->
+          case straight svs of
+            True -> (SF, highest, highest)
+            False -> (Fs, highest, highest)
+    False ->
+      case straight svs of
+        True -> (St, highest, highest)
+        False ->
+          case fst (valSplitTwo svs) of
+            True ->
+              case fourKinds svs of
+                True -> (FK, snd (valSplitTwo svs), highest)
+                False -> (FH, snd (valSplitTwo svs), highest)
+            False ->
+              case threeKinds svs of
+                True -> (TK, snd (valSplitTwo svs), highest)
+                False ->
+                  case fst (twoPairs svs) of
+                    True -> (TP, snd (twoPairs svs), highest)
+                    False ->
+                      case onePair svs of
+                        True -> (OP, snd (twoPairs svs), highest)
+                        False -> (HI, highest, highest)
+              
+          
+      
+      
