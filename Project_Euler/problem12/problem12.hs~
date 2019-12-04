@@ -1,0 +1,3 @@
+highlyDivisibleTri :: Int
+highlyDivisibleTri = head . filter check $ [1..]
+  where check x = 

@@ -1,0 +1,18 @@
+import Data.Array.Accelerate
+import Data.Array.Accelerate.Interpreter
+
+longestCollatz :: [(Int, Int)] -> [(Int, Int)]
+longestCollatz [t] = [t]
+longestCollatz ts = longestCollatz . map collatz $ filter check ts
+  where
+    collatz (init, next) =
+      case even next of
+        True -> (init, next `div` 2)
+        False -> (init, 3*next + 1)
+    check (init, next) = 1 /= next
+
+main :: IO ()
+main = do
+  let n = 1000000 :: Int
+  let result = fst . head . longestCollatz $ zip [1..1000000] [1..1000000]
+  print result
