@@ -1,0 +1,11 @@
+
+./prime.hs,201
+sieve sieve5,6
+sieve sieve6,7
+primesUnder primesUnder12,13
+primesUnder primesUnder13,14
+primeVec primeVec23,24
+isPrime isPrime25,26
+isPrime isPrime26,27
+main main34,35
+main main35,36

@@ -1,0 +1,2 @@
+stPrime :: Int
+stPrime = last . take 10001 . filter isPrime $ [1..]

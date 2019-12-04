@@ -1,0 +1,4 @@
+largestPalin :: Int
+largestPalin = head . filter isPalin $ lst
+  where lst = [a * b | a <- [999, 998..100], b <- [999, 998..100]]
+        isPalin x = show x == (reverse 

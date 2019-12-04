@@ -1,0 +1,2 @@
+sumSD :: Int
+sumSD = (sum . square $ [1..100]) - (square . sum $ [1..100])

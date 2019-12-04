@@ -1,0 +1,22 @@
+import Data.Array.Accelerate as A
+import Data.Array.Accelerate.LLVM.PTX
+
+checkFactor :: Exp Int -> Exp Int -> Exp Bool
+checkFactor n x = n `mod` x A.==  0  
+
+checkNotPrime :: Exp Int -> Exp Bool
+checkNotPrime fac = --the $ 
+--  acond
+  (the $ A.any (checkFactor fac) $ enumFromN (index1 (fac-2)) 2)
+--  (unit 0)
+--  (unit fac)
+
+factors :: Int -> Acc (Vector Int, Array Z Int)
+factors num = A.filter (checkFactor (constant num)) $ enumFromN (index1 factorLen) 2
+  where factorLen = constant $ (Prelude.floor . sqrt . Prelude.fromIntegral $ num) - 1 :: Exp Int 
+
+main :: IO ()
+main = do
+  num <- getLine
+  let n = read num
+  print $ run $ largestPF n
