@@ -1,0 +1,28 @@
+
+./problem66.hs,610
+expApprox expApprox4,5
+expApprox expApprox5,6
+convergent convergent7,8
+convergent convergent8,9
+intSqrt intSqrt10,11
+intSqrt intSqrt11,12
+isInt isInt13,14
+isInt isInt14,15
+isSqrt isSqrt16,17
+isSqrt isSqrt17,18
+getInit getInit19,20
+getInit getInit20,21
+safelast safelast23,24
+safelast safelast24,25
+process process27,28
+process process28,29
+format format38,39
+format format39,40
+findSolution findSolution41,42
+findSolution findSolution42,43
+checkInit checkInit46,47
+checkInit checkInit47,48
+result result52,53
+result result53,54
+main main55,56
+main main56,57

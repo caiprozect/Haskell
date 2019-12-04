@@ -1,0 +1,16 @@
+import Data.List
+import Data.Numbers.Primes
+
+part :: (Int, Int) -> [(Int, Int)]
+part (num, p) = do
+  a <- filter (<=p) primes
+  case num - a < 0 of
+    True -> []
+    False ->
+      case num - a == 0 of
+        True -> return (num-a, a)
+        False -> concat . part $ (num-a, a)
+
+main :: IO ()
+main = do
+  print $ length . part $ (10, 10)

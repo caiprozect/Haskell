@@ -1,0 +1,90 @@
+import Data.List
+
+commonLst = [[a,b] | a <- ['1'..'9'], b <- ['0'..'9']]
+
+elems :: String -> [[String]]
+elems [a,b] = [[[a,b], e1, e2, e3, e4, e5, [a,b]] | e1 <- lst, e2 <- lst, e3 <- lst, e4 <- lst, e5 <- lst]
+  where
+    lst = dropWhile (/= [a,b]) commonLst
+
+genCandi :: [String] -> [String]
+genCandi [] = []
+genCandi [a] = []
+genCandi lst = (a++b) : genCandi (drop 1 lst)
+  where
+    [a,b] = take 2 lst
+
+candis :: String -> [[String]]
+candis str = filter (\x -> length (nub x) == 6) . map genCandi . elems $ str
+
+isInt :: Double -> Bool
+isInt num = num == (fromIntegral . round $ num)
+
+isGeom :: Int -> String -> [Int]
+isGeom 3 str =
+  let
+    x = read str :: Double
+  in
+    case isInt $ ((-1)+sqrt (1+8*x)) / 2 of
+      True -> [3]
+      False -> []
+isGeom 4 str =
+  let
+    x = read str :: Double
+  in
+    case isInt $ sqrt x of
+      True -> [4]
+      False -> []
+isGeom 5 str =
+  let
+    x = read str :: Double
+  in
+    case isInt $ (1+sqrt (1+24*x)) / 6 of
+      True -> [5]
+      False -> []
+isGeom 6 str =
+  let
+    x = read str :: Double
+  in
+    case isInt $ (1+sqrt (1+8*x)) / 4  of
+      True -> [6]
+      False -> []
+isGeom 7 str =
+  let
+    x = read str :: Double
+  in
+    case isInt $ (3+sqrt (9+40*x)) / 10 of
+      True -> [7]
+      False -> []
+isGeom 8 str =
+  let
+    x = read str :: Double
+  in
+    case isInt $ (2+sqrt (4+12*x)) / 6 of
+      True -> [8]
+      False -> []
+
+geomCheck :: String -> [Int]
+geomCheck str = concat $ map (uncurry isGeom) $ zip [3..8] (repeat str)
+
+checkCoverWholeGeom :: [String] -> [String]
+checkCoverWholeGeom slst =
+  let
+    [lst1, lst2, lst3, lst4, lst5, lst6] = map geomCheck slst
+  in
+    case elem [3..8] [(sort [a,b,c,d,e,f]) | a <- lst1, b <- lst2, c <- lst3, d <- lst4, e <- lst5, f <- lst6] of
+      True -> slst
+      False -> []
+
+genCycle :: [String] -> [String]
+genCycle lst = checkCoverWholeGeom lst
+    
+cfn :: [String]
+cfn = head . filter (/= []) . map genCycle . concat . map candis $ [[a,b] | a <- ['1'..'9'], b <- ['0'..'9']]
+
+main :: IO ()
+main = do
+  print cfn
+
+    
+    
