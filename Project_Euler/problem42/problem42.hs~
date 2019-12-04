@@ -1,0 +1,1 @@
+isTriangleWord :: String -> Bool

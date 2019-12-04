@@ -1,0 +1,2 @@
+pandigits :: Int -> [Int]
+pandigits k = filter check [10^(k-1)..(10^k-1)]
